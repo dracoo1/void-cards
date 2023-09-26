@@ -12,6 +12,7 @@ c = con.cursor()
 c.execute("""DROP TABLE IF EXISTS Cards""")
 c.execute("""
     CREATE TABLE Cards (
+        Id TEXT,
         Name TEXT,
         Anime TEXT,
         Power TEXT,
@@ -25,9 +26,9 @@ c.execute("""
 for row in df.itertuples(index=False):
     
     c.execute("""
-        INSERT INTO Cards ("Name", "Anime", "Power", "Type", "Rarity", "Image")
-        VALUES (?, ?, CAST(? AS TEXT), ?, ?, ?)
-    """, (row.Name, row.Anime, row.Power, row.Type, row.Rarity, row.Image))
+        INSERT INTO Cards ("Id","Name", "Anime", "Power", "Type", "Rarity", "Image")
+        VALUES (CAST(? AS TEXT),?, ?, CAST(? AS TEXT), ?, ?, ?)
+    """, (row.Id, row.Name, row.Anime, row.Power, row.Type, row.Rarity, row.Image))
 
 con.commit()
 c.close()
