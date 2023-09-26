@@ -14,8 +14,7 @@ class listAll:
         LIST= """"""
         
         for i in range(cardCount):
-            _Name = Name[i][0]
-            LIST += str(i)+" "+_Name+"\n"
+            LIST += f"{str(i+1)} {Name[i][0]}  --  {Anime[i][0]}\n"
         self.embed = Embed(
             title="List of Cards",
             description=LIST,
@@ -26,13 +25,27 @@ class listAll:
 class CardSearch:
     def __init__(self, _search):
         try:
+            #card id
             i = int(_search)
             
+            #sets file to image
+            self.file = discord.File("./cards/"+Image[i-1][0]+".jpg",Image[i-1][0]+".jpg") 
+            #lists all card values
+            char = (Name[i-1][0]+"\n"+Anime[i-1][0])
+            foot= f"Type: {Type[i-1][0]}   Power: {Power[i-1][0]}\n"
+            #embed
             self.embed = Embed(
             title="List of Cards",
-            description=Name[i][0],
+            #description=desc,
             color=0xaa00b6 
             )
+            self.embed.add_field(name="Name", value=char,inline=True)
+            self.embed.add_field(name="Rarity", value=Rarity[i-1][0],inline=True)
+            self.embed.set_image(url="attachment://"+Image[i-1][0]+".jpg")
+            self.embed.set_footer(
+            text=foot,
+            )
+            
         except:
             LIST= """Invalid Number
             Current List: """

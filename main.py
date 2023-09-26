@@ -15,19 +15,19 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith("$help"):
-        await message.channel.send("temp help menu")
+    if message.content.startswith("$help") and len(message.content) <= len("$help"):
+        await message.channel.send(f"{message.author.mention}\n$ls - Lists all cards\n$sc * - Search cards")
 
-    if message.content.startswith("$lc"):
-        await message.channel.send(embed=listAll().embed)
+    if message.content.startswith("$ls") and len(message.content) <= len("$ls"):
+        await message.channel.send(f"{message.author.mention}",embed=listAll().embed)
 
     if message.content.startswith("$sc"):
         search = message.content.split()
         _search = search[-1]
-        await message.channel.send(embed=CardSearch(_search).embed)
+        await message.channel.send(f"{message.author.mention}",file = CardSearch(_search).file, embed=CardSearch(_search).embed)
 
-    if message.content.startswith("$sb"):
-        await message.channel.send("TEMP SCOREBOARD")
+    if message.content.startswith("$sb") and len(message.content) <= len("$sb"):
+        await message.channel.send(f"{message.author.mention}","TEMP SCOREBOARD")
         
     
 
