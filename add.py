@@ -8,21 +8,21 @@ Power = None
 Defence = None
 Type = None
 Effect = None
-rarity = None
-imagename = None
+Rarity = None
+Imagename = None
 
 Name = input("Card Name: ")
 Anime = input("Anime Name: ")
 Power = input("Card Power: ")
 Type = input("Card Type: ")
-rarity = input("Card Rarity: ")
-imagename = input("Card Image Name: ")
+Rarity = input("Card Rarity: ")
+Imagename = input("Card Image Name: ")
 
-print (Name, Power, Type, rarity, imagename)
+print (Name, Power, Type, Rarity, Imagename)
 
 
 try:
-    cur.execute("INSERT INTO Cards (Name, Anime, Power, Type, Rarity, Image) VALUES (?, ?, ?, ?, ?, ?)", (Name, Anime, Power, Type, rarity, imagename))
+    cur.execute("INSERT INTO Cards (Name, Anime, Power, Type, Rarity, Image) VALUES (?, ?, ?, ?, ?, ?)", (Name, Anime, Power, Type, Rarity, Imagename))
     
     # Commit the changes to the database
     con.commit()
