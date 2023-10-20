@@ -9,5 +9,5 @@ CCount, Common = get_rarity()
 
 for i in range(20):
     ran = random.randint(0,CCount[0][0]-1)
-    print(f"{Common[ran][0]} : {Id[ran][0]} --- {CName[ran][0]} ")
+    print(f"{Common[ran][0]} : {Id[ran][0]} --- {CName[ran][0]} ")o
 
